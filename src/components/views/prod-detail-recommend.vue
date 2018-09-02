@@ -95,4 +95,23 @@
 	.detailsArea li:nth-child(2n) {
 		margin-left: 20px;
 	}
+
+
+	/* 반응형 */
+	@media (max-width: 1000px) {
+		.recommendWrap {
+			width: calc(100% - 60px);
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+
+		.detailsArea li:nth-child(2n) {margin-left: 0;}
+		
+		p.imgThumb {width: 100%;}
+		p.imgThumb img {width: 100%;}
+
+		.detailsArea li {
+			float: none;
+		}
+	}
 </style>

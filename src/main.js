@@ -8,6 +8,8 @@ Vue.config.productionTip = false
 
 import './assets/css/style.css'
 
+Vue.prototype.$EventBus = new Vue();
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

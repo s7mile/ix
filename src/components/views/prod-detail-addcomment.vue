@@ -102,4 +102,12 @@
 		border: 1px solid #000;
 		border-radius: 3px;
 	}
+
+
+	/* 반응형 */
+	@media (max-width: 1000px) {
+		.commentWrap {
+			width: calc(100% - 60px);
+		}
+	}
 </style>

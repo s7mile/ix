@@ -46,7 +46,7 @@
 		overflow: hidden;
 		width: 560px;
 		margin: 0 auto;
-		padding: 0 30px 30px;
+		padding: 0 30px;
 		background: #fff;
 	}
 
@@ -57,6 +57,8 @@
 		border-top: 1px solid #ccc;
 		font-weight: 600
 	}
+
+	.detailsArea {padding-bottom: 30px;}
 
 	dl {
 	    margin-top: 10px;
@@ -74,4 +76,12 @@
 	}
 
 	/* //기존 사이트의 CSS 가져옴 */
+
+
+	/* 반응형 */
+	@media (max-width: 1000px) {
+		.shippingWrap {
+			width: calc(100% - 60px);
+		}
+	}
 </style>

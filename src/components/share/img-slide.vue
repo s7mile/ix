@@ -96,4 +96,10 @@
 	.slide-fade-enter, .slide-fade-leave-to {
 		opacity: 0;
 	}
+
+	@media (max-width: 1000px) {
+		.imgSlide {
+			width: 100%;
+		}
+	}
 </style>

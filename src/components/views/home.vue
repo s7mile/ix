@@ -163,6 +163,12 @@
 				visibleDetail: false
 			}
 		},
+		created() {
+			var vm = this
+			vm.$EventBus.$on('visibleDetail', function(val) {
+			    vm.visibleDetail = false
+			});
+		},
 		methods: {
 			addMyList: function(index, id) { //myList버튼 클릭 시 버튼 토글
 				//tobe: 상품이 장바구니에 들어가도록 api 연결
@@ -251,5 +257,11 @@
 		line-height: 26px;
 		font-size: 12px;
 		font-weight: bold;
+	}
+
+	@media (max-width: 1000px) {
+		#homeWrap > ul > li {
+			width: calc(100% - 40px);
+		}
 	}
 </style>

@@ -54,7 +54,7 @@
 <style scoped>
 	.prodWrap {
 		overflow: hidden;
-		width: 620px;
+		max-width: 620px;
 		margin: 0 auto;
 		padding-bottom: 42px;
 		background: #fff;
@@ -62,6 +62,8 @@
 		border-top-right-radius: 5px;
 		text-align: center;
 	}
+
+	.prodWrap > img {width: 100%;}
 
 	.prodWrap > h2 {
 		display: block;
@@ -115,5 +117,20 @@
 	}
 	button.addMyList.active i {
 		background-position: -140px -130px;
+	}
+
+
+	/* 반응형 */
+	@media (max-width: 1000px) {
+		.prodWrap {
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+		}
+		.prodWrap .desc {width: 100%;}
+
+		ul.button li {
+			margin-bottom: 5px;
+			width: 90%;
+		}
 	}
 </style>

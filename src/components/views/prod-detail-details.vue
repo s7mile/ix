@@ -72,4 +72,15 @@
 	    line-height: 20px;
 	}
 	/* //기존 사이트의 CSS 가져옴 */
+
+
+	/* 반응형 */
+	@media (max-width: 1000px) {
+		.detailWrap {
+			width: calc(100% - 60px);
+		}
+
+		.detailsArea img {max-width: 100%;}
+
+	}
 </style>

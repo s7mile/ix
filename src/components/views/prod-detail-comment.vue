@@ -131,4 +131,12 @@
 	    font-size: 12px;
 		color: #999;
 	}
+
+	/* 반응형 */
+	@media (max-width: 1000px) {
+		.commentWrap {
+			width: calc(100% - 60px);
+		}
+		
+	}
 </style>
