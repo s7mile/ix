@@ -1,5 +1,5 @@
 <template>
-	<div class="imgSlide" @mouseover="showButton = true" @mouseout="showButton = false">
+	<div class="imgSlide" @mouseover="showButton = true" @mouseout="showButton = false" @click="showDetail">
 
 		<!-- 이전, 다음 버튼 -->
 		<button class="icoFriends prev" v-show="showButton" @click="moveImgCurrentIndex('prev')">이전</button>
@@ -48,6 +48,9 @@
 					vm.moveNext()
 				}
 				
+			},
+			showDetail: function() {
+				this.$EventBus.$emit("visibleDetail", true)
 			}
 		}
 	}
@@ -59,6 +62,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+		width: 100%;
 	}
 	.imgSlide {
 		position: relative;
@@ -101,5 +105,9 @@
 		.imgSlide {
 			width: 100%;
 		}
+
+		.imgSlide img {width: 100%;}
+
+		.imgSlide > button {display: none}
 	}
 </style>

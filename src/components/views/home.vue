@@ -166,7 +166,8 @@
 		created() {
 			var vm = this
 			vm.$EventBus.$on('visibleDetail', function(val) {
-			    vm.visibleDetail = false
+				//visibleDetail eventbus가 오면 val에 따라 보여주기/숨기기
+			    vm.visibleDetail = val
 			});
 		},
 		methods: {
