@@ -7,22 +7,21 @@
 					<legend>sign in</legend>
 					<span class="errorMsg" style="display: none;">
 					</span>
-					<div class="area_login">
+					<div class="loginArea">
 						<label for="email">Email</label>
 						<input type="email" id="email" name="email" placeholder="Email" required="true">
 					</div>
-					<div class="area_login">
+					<div class="loginArea">
 						<label for="password">Password</label>
 						<input type="password" id="password" name="password" placeholder="Password" required="true">
 					</div>
-					<div class="area_login">
-						<div class="chk_g chk_md">
-							<input id="status" type="checkbox" name="status" value="" class="inp_g">
-							<label for="status" class="lab_g">Remember me</label>
-						</div>
-						<a class="link_pwd">Forgot password?</a>
+					<div>
+						<input id="status" type="checkbox" name="status" value="" class="checkbox">
+						<label for="status">Remember me</label>
+
+						<a class="findPwBtn" href="javascript: alert('준비중입니다')">Forgot password?</a>
 					</div>
-					<button type="submit" class="btn_g btn_black">SIGN IN</button>
+					<input type="submit" value="SIGN IN">
 				</fieldset>
 			</form>
 			<div class="btnWrap">
@@ -39,11 +38,31 @@
 
 <script>
 	export default {
-		name: 'signin'
+		name: 'signin',
+		methods: {
+			closeModal: function() {
+				var container = this.$refs.signin;
+				var vm = this
+
+				//home.vue에 있는 visibleDetail 제어하여 컴포넌트 숨기기
+				vm.$EventBus.$emit('visibleDetail', false);
+				document.body.className = ''; //body의 scrollOff class 없애주기
+
+				//스크롤 초기화
+				container.scrollTop = 0;
+			}
+		}
 	}
 </script>
 
 <style scoped>
+h3 {
+    margin: 40px 0 60px;
+	font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+}
+
 #signin {
 	z-index: 9999;
 	overflow: hidden;
@@ -77,11 +96,39 @@
 	border-radius: 8px;
 }
 
-h3 {
-    margin: 40px 0 60px;
-	font-size: 22px;
-    font-weight: 600;
-    text-align: center;
+fieldset > div {margin-bottom: 10px;}
+
+.findPwBtn {
+	float: right;
+	color: #767676;
+}
+
+.loginArea label {display: none}
+
+input[type="submit"] {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	background-color: #000;
+	border-radius: 3px;
+    color: #fff;
+}
+
+.btnWrap {
+	margin-top: 50px;
+}
+
+.btnWrap li:last-child {
+	margin-top: 20px;
+	padding-top: 20px;
+	border-top: 1px solid #ccc;
+}
+
+.btnWrap button {
+	width: 100%;
+	height: 40px;
+	border: 1px solid #000;
+	line-height: 40px;
 }
 
 
@@ -93,5 +140,11 @@ h3 {
 	}
 
 	.closeBtn {right: 12px;}
+
+	.signinWrap {
+		width: calc(100% - 60px);
+		border-radius: 0;
+		height: calc(100% - 60px);
+	}
 }
 </style>

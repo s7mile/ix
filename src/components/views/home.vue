@@ -24,7 +24,7 @@
 			</li>
 		</ul>
 
-		<prod v-show="visibleDetail"></prod>
+		<prod v-if="visibleDetail"></prod>
 	</div>
 </template>
 

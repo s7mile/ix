@@ -9,11 +9,11 @@
 				<li class="myList">
 					<a href="/collection" class="icoApeach" title="my list">My List</a>
 				</li>
-				<li><a href="/" title="Sign in to your account">ACCOUNT</a></li>
+				<li><a href="javascript:;" @click="showSignIn" title="Sign in to your account">ACCOUNT</a></li>
 			</ul>
 		</nav>
 
-		<signin></signin>
+		<signin v-if="visibleDetail"></signin>
 	</header>
 	<!-- [E]header -->
 </template>
@@ -22,7 +22,24 @@
 	import signin from '../views/signin.vue'
 	export default {
 		name: 'app-header',
-		components: {signin}
+		components: {signin},
+		data() {
+			return {
+				visibleDetail: false
+			}
+		},
+		created() {
+			var vm = this
+			vm.$EventBus.$on('visibleDetail', function(val) {
+			    vm.visibleDetail = false
+			});
+		},
+		methods: {
+			showSignIn: function() {
+				this.visibleDetail = true
+				document.body.className = 'scrollOff'
+			}
+		}
 	}
 </script>
 
