@@ -183,7 +183,7 @@
 
 			showDetail: function() {
 				this.visibleDetail = true
-				document.body.className = 'scrollOff';
+				document.body.className = 'scrollOff'
 			}
 		}
 	}

@@ -1,5 +1,5 @@
 <template>
-	<div id="prod">
+	<div id="prod" ref="prod">
 		<!-- 상품 정보 -->
 		<prod-info></prod-info>
 
@@ -19,9 +19,15 @@
 		components: {prodInfo, prodDetail},
 		methods: {
 			closeModal: function() {
+				var container = this.$refs.prod;
 				var vm = this
+
+				//home.vue에 있는 visibleDetail 제어하여 컴포넌트 숨기기
 				vm.$EventBus.$emit('visibleDetail', false);
-				document.body.className = '';
+				document.body.className = ''; //body의 scrollOff class 없애주기
+
+				//스크롤 초기화
+				container.scrollTop = 0;
 			}
 		}
 	}
