@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+/* [S] Normalize */
+html, body {
+	min-height: 100%;
+}
+* {
+	margin: 0px;
+	padding: 0px;
+}
+img {
+	border: 0;
+	vertical-align: middle;
+}
+li {list-style: none}
+a {text-decoration: none;}
+a, html, button, input, textarea, pre {
+	font-family: -apple-system,BlinkMacSystemFont,Roboto,Helvetica,Helvetica Neue,AppleSdGothicNeo-Regular,Malgun Gothic,"\B9D1\C740 \ACE0\B515",sans-serif;
+	font-size: 14px;
+	color: #4a4a4a;
+}
+iframe {border: 0;}
+{font-style: normal;}
+button, label, input[type="submit"], input[type="image"], input[type="button"] {
+	border: 0;
+	cursor: pointer;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline: none;
+}
+input[type="checkbox"],
+input[type="radio"] {vertical-align: middle}
+.textarea,textarea, input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
+	padding: 0 5px;
+	letter-spacing: -0.8px;
+	color: #4a4a4a;
+	border-radius: 4px;
+	border: 1px solid #c9c9c9;
+	-webkit-appearance: none;
+	font-weight: 200;
+}
+button {background: none}
+input[type="text"]:focus, input[type="password"]:focus {border-color: #4a4a4a;}
+.textarea:focus,
+textarea:focus {
+	outline: none;
+	border-color: #4a4a4a;
+}
+input:focus, select {
+  outline: none;
+}
+caption, legend {
+	height: 0px;
+	text-indent: -999em;
+	font-size: 1px;
+}
+pre {line-height: 100%;}
+select {font-size: 13px;}
+/* [E] Normalize */
+
+section {padding-top: 100px;}
+
+
+.icoFriends {
+	background: url(../../assets/img/ico_friends_rtn.png) no-repeat;
+}
+.icoApeach {
+	background: url('../../assets/img/img_apeach.png') 0px 0px / 240px no-repeat;
+}
+
+
