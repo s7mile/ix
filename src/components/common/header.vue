@@ -31,11 +31,12 @@
 		created() {
 			var vm = this
 			vm.$EventBus.$on('visibleDetail', function(val) {
+				//visibleDetail 이벤트버스가 오면(닫기 버튼 눌렀을 경우) signin컴포넌트 숨겨주기
 			    vm.visibleDetail = false
 			});
 		},
 		methods: {
-			showSignIn: function() {
+			showSignIn: function() { //signin 컴포넌트 보여주기
 				this.visibleDetail = true
 				document.body.className = 'scrollOff'
 			}

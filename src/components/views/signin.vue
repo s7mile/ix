@@ -2,25 +2,31 @@
 	<div id="signin" ref="signin">
 		<div class="signinWrap">
 			<h3>Sign in to your account</h3>
+			<!-- 기존 사이트를 참고하여 코딩하였습니다. -->
 			<form>
 				<fieldset>
 					<legend>sign in</legend>
 					<span class="errorMsg" style="display: none;">
 					</span>
+					<!-- email부분 -->
 					<div class="loginArea">
 						<label for="email">Email</label>
 						<input type="email" id="email" name="email" placeholder="Email" required="true">
 					</div>
+					<!-- password부분 -->
 					<div class="loginArea">
 						<label for="password">Password</label>
 						<input type="password" id="password" name="password" placeholder="Password" required="true">
 					</div>
+					<!-- 그 외 기능 영역 -->
 					<div>
 						<input id="status" type="checkbox" name="status" value="" class="checkbox">
 						<label for="status">Remember me</label>
 
 						<a class="findPwBtn" href="javascript: alert('준비중입니다')">Forgot password?</a>
 					</div>
+
+					<!-- submit -->
 					<input type="submit" value="SIGN IN">
 				</fieldset>
 			</form>
@@ -40,11 +46,11 @@
 	export default {
 		name: 'signin',
 		methods: {
-			closeModal: function() {
+			closeModal: function() { //모달닫기
 				var container = this.$refs.signin;
 				var vm = this
 
-				//home.vue에 있는 visibleDetail 제어하여 컴포넌트 숨기기
+				//header.vue에 있는 visibleDetail 제어하여 컴포넌트 숨기기
 				vm.$EventBus.$emit('visibleDetail', false);
 				document.body.className = ''; //body의 scrollOff class 없애주기
 
