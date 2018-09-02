@@ -136,4 +136,11 @@ export default {
 	}
 
 	address {font-style: normal;}
+
+	@media (max-width: 1000px) {
+		.icoFriends {
+			background-position: 0 -75px;
+			height: 14px;
+		}
+	}
 </style>
