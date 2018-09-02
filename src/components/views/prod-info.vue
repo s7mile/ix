@@ -132,5 +132,9 @@
 			margin-bottom: 5px;
 			width: 90%;
 		}
+
+		button.addMyList i {background-position: 0 -115px;}
+		button.addMyList.active i {background-position: -20px -115px;}
+		button.buyProd i {background-position: -40px -115px;}
 	}
 </style>

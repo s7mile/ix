@@ -263,5 +263,8 @@
 		#homeWrap > ul > li {
 			width: calc(100% - 40px);
 		}
+
+		button.addMyList i {background-position: -50px -60px;}
+		button.addMyList.active i {background-position: -65px -60px;}
 	}
 </style>
