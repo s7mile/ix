@@ -46,6 +46,7 @@
 
 <style scoped>
 h1 {
+	position: absolute;
 	text-indent: -999em;
 	font-size: 1px;
 }
@@ -56,8 +57,8 @@ header {
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 75px;
-	padding-top: 5px;
+	height: 62px;
+	padding-top: 18px;
 	background: rgba(255, 255, 255, 0.95);
 	border-bottom: 1px solid rgb(204, 204, 204);
 }
@@ -69,7 +70,6 @@ header li:first-child {
 header li.myList {
 	float: left;
 	width: 40%;
-	text-align: center;
 }
 header li:last-child {
 	float: right;
@@ -83,12 +83,12 @@ header li a {
 	font-size: 14px;
 	color: #767676;
 }
-
 li.myList > a {
-	display: inline-block;
+	display: block;
 	width: 40px;
 	height: 40px;
 	padding: 0;
+	margin: 2px auto;
 	text-indent: -999em;
 	font-size: 1px;
 }
