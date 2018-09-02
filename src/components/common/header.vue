@@ -12,14 +12,18 @@
 				<li><a href="/" title="Sign in to your account">ACCOUNT</a></li>
 			</ul>
 		</nav>
+
+		<signin></signin>
 	</header>
 	<!-- [E]header -->
 </template>
 
 <script>
-export default {
-	name: 'app-header',
-}
+	import signin from '../views/signin.vue'
+	export default {
+		name: 'app-header',
+		components: {signin}
+	}
 </script>
 
 <style scoped>
