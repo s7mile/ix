@@ -1,11 +1,11 @@
 <template>
-	<div class="imgSlide" @mouseover="showButton = true" @mouseout="showButton = false" @click="showDetail">
+	<div class="imgSlide" @mouseover="showButton = true" @mouseout="showButton = false">
 
 		<!-- 이전, 다음 버튼 -->
 		<button class="icoFriends prev" v-show="showButton" @click="moveImgCurrentIndex('prev')">이전</button>
 		<button class="icoFriends next" v-show="showButton" @click="moveImgCurrentIndex('next')">다음</button>
 		
-		<ul>
+		<ul @click="showDetail">
 			<!-- 트랜지션을 위해 감싸주기 -->
 			<transition name="slide-fade">
 			<li v-for="(img, index) in imgs" v-if="currentImgIndex === index" :key="index">
