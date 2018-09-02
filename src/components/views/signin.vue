@@ -1,6 +1,7 @@
 <template>
 	<div id="signin" ref="signin">
 		<div class="signinWrap">
+			<i class="icoFriends"></i>
 			<h3>Sign in to your account</h3>
 			<!-- 기존 사이트를 참고하여 코딩하였습니다. -->
 			<form>
@@ -63,10 +64,19 @@
 
 <style scoped>
 h3 {
-    margin: 40px 0 60px;
+	margin: 40px 0 60px;
 	font-size: 22px;
-    font-weight: 600;
-    text-align: center;
+	font-weight: 600;
+	text-align: center;
+}
+
+.signinWrap > .icoFriends {
+	display: block;
+	width: 26px;
+	height: 26px;
+	margin: 0 auto;
+	background-position: -145px -85px;
+	background-size: 190px 180px;
 }
 
 #signin {
@@ -117,7 +127,7 @@ input[type="submit"] {
 	line-height: 40px;
 	background-color: #000;
 	border-radius: 3px;
-    color: #fff;
+	color: #fff;
 }
 
 .btnWrap {
@@ -145,12 +155,31 @@ input[type="submit"] {
 		height: 100%;
 	}
 
-	.closeBtn {right: 12px;}
+	.closeBtn {
+		right: 12px;
+		width: 13px;
+		height: 13px;
+		background-position: -25px 0;
+	}
 
 	.signinWrap {
 		width: calc(100% - 60px);
 		border-radius: 0;
 		height: calc(100% - 60px);
+	}
+
+	.btnWrap {
+		position: absolute;
+		bottom: 20px;
+		left: 30px;
+		width: calc(100% - 60px);
+	}
+
+	.signinWrap > .icoFriends {
+		margin-top: 30px;
+	}
+	h3 {
+		margin: 20px 0 60px;
 	}
 }
 </style>

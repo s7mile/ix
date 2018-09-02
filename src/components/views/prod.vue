@@ -66,6 +66,9 @@
 			height: 100%;
 		}
 
-		.closeBtn {right: 12px;}
+		.closeBtn {
+			right: 12px;
+			background-position: 0 -40px;
+		}
 	}
 </style>

@@ -123,4 +123,10 @@ section {padding-top: 100px;}
 					transform: rotate(45deg);
 }
 
+@media (max-width: 1000px) {
+	.icoFriends {
+		background: url(../../assets/img/ico_friends_m.png) no-repeat;
+		background-size: 190px 180px;
+	}
+}
 

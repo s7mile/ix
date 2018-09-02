@@ -5,7 +5,7 @@
 		<button class="icoFriends prev" v-show="showButton" @click="moveImgCurrentIndex('prev')">이전</button>
 		<button class="icoFriends next" v-show="showButton" @click="moveImgCurrentIndex('next')">다음</button>
 		
-		<ul>
+		<ul @click="showDetail">
 			<!-- 트랜지션을 위해 감싸주기 -->
 			<transition name="slide-fade">
 			<li v-for="(img, index) in imgs" v-if="currentImgIndex === index" :key="index">
@@ -48,6 +48,9 @@
 					vm.moveNext()
 				}
 				
+			},
+			showDetail: function() {
+				this.$EventBus.$emit("visibleDetail", true)
 			}
 		}
 	}
@@ -59,6 +62,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+		width: 100%;
 	}
 	.imgSlide {
 		position: relative;
@@ -101,5 +105,9 @@
 		.imgSlide {
 			width: 100%;
 		}
+
+		.imgSlide img {width: 100%;}
+
+		.imgSlide > button {display: none}
 	}
 </style>

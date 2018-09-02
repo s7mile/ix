@@ -11,7 +11,7 @@
 				<span class="rating" style="width: 70%">3.5</span>
 			</p>
 
-			<textarea cols="30" rows="10">Just like I imagined!</textarea>
+			<textarea cols="30" rows="10" title="Write Comment">Just like I imagined!</textarea>
 
 			<input type="submit" value="Submit">
 		</div>
