@@ -101,6 +101,7 @@
 		line-height: 34px;
 		border: 1px solid #000;
 		border-radius: 3px;
+		background: none;
 	}
 
 
