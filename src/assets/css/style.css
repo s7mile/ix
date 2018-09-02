@@ -17,7 +17,7 @@ a {text-decoration: none;}
 a, html, button, input, textarea, pre {
 	font-family: -apple-system,BlinkMacSystemFont,Roboto,Helvetica,Helvetica Neue,AppleSdGothicNeo-Regular,Malgun Gothic,"\B9D1\C740 \ACE0\B515",sans-serif;
 	font-size: 14px;
-	color: #4a4a4a;
+	color: #000;
 }
 iframe {border: 0;}
 {font-style: normal;}
@@ -67,6 +67,19 @@ section {padding-top: 100px;}
 }
 .icoApeach {
 	background: url('../../assets/img/img_apeach.png') 0px 0px / 240px no-repeat;
+}
+.rating {
+	background: url(../../assets/img/ico_rating.png) no-repeat;
+}
+
+.scrollOff {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	max-height: 100vh;
+	overflow: hidden;
 }
 
 

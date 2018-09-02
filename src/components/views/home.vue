@@ -1,16 +1,13 @@
 <template>
+	<!-- 쇼핑몰 메인홈 (아이템 리스트) -->
 	<div id="homeWrap">
 		<ul>
-			<li v-for="result in results">
-				<div class="imgSlide">
-					<ul>
-						<li v-for="img in result.imgs">
-							<img :src="img" :alt="result.title">
-						</li>
-					</ul>
-				</div>
+			<!-- 결과 데이터 출력 -->
+			<li v-for="(result, index) in results">
+				<!-- 이미지 슬라이더 -->
+				<img-slide :imgs="result.imgs" :title="result.title"></img-slide>
 
-				<p class="desc">{{ result.desc }}</p>
+				<a href="javascript:;" class="desc" @click="showDetail">{{ result.desc }}</a>
 				<p class="prodInfo">
 					<strong>{{ result.title }}</strong>
 					<span class="price">${{ result.price }}</span>
@@ -20,110 +17,167 @@
 					<a href="javascript:;" class="comments">{{ result.comments }} COMMENTS</a>
 				</p>
 
-				<button class="addMyList">
+				<button class="addMyList" :class="addActive(result.myList)" @click="addMyList(index, result.id)">
 					<i class="icoFriends"></i>
 					My list
 				</button>
 			</li>
 		</ul>
+
+		<prod v-show="visibleDetail"></prod>
 	</div>
 </template>
 
 <script>
+	import imgSlide from '../share/img-slide.vue' //이미지 슬라이드 컴포넌트 불러오기
+	import prod from './prod.vue' //상품 상세보기
+
 	export default {
-		name: 'Home',
-		data () {
-			return {
+		name: 'home',
+		components: {imgSlide, prod},
+		data() {
+			return { 
+				//더미 데이터
 				results: [
 					{
+						id: 1,
 						imgs: [
 							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00001.jpg?type=thumb&opt=R340x340.q100',
-							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00002.jpg?type=thumb&opt=R340x340.q100'
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00005.jpg?type=thumb&opt=R340x340.q100',
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00002.jpg?type=thumb&opt=R340x340.q100',
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00005.jpg?type=thumb&opt=R340x340.q100'
 						],
 						desc: 'Glide across the water on this pool float in Ryan print we love💜 In these lazy hazy crazy days of summer, all you need is a good does of vitamin sea!☀️🏝🌈 #poolfloat #Ryantube #floatingtube #beachitem',
 						title: 'Floating Mat Surfing Tube-Ryan',
 						price: '27.02',
 						added: '2016',
-						comments: '5'
+						comments: '5',
+						myList: false
 					},
 					{
+						id: 2,
 						imgs: [
 							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00001.jpg?type=thumb&opt=R340x340.q100',
-							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00002.jpg?type=thumb&opt=R340x340.q100'
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00005.jpg?type=thumb&opt=R340x340.q100',
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00002.jpg?type=thumb&opt=R340x340.q100',
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00005.jpg?type=thumb&opt=R340x340.q100'
 						],
 						desc: 'Glide across the water on this pool float in Ryan print we love💜 In these lazy hazy crazy days of summer, all you need is a good does of vitamin sea!☀️🏝🌈 #poolfloat #Ryantube #floatingtube #beachitem',
 						title: 'Floating Mat Surfing Tube-Ryan',
 						price: '27.02',
 						added: '2016',
-						comments: '5'
+						comments: '5',
+						myList: false
 					},
 					{
+						id: 3,
 						imgs: [
 							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00001.jpg?type=thumb&opt=R340x340.q100',
-							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00002.jpg?type=thumb&opt=R340x340.q100'
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00005.jpg?type=thumb&opt=R340x340.q100',
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00002.jpg?type=thumb&opt=R340x340.q100',
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00005.jpg?type=thumb&opt=R340x340.q100'
 						],
 						desc: 'Glide across the water on this pool float in Ryan print we love💜 In these lazy hazy crazy days of summer, all you need is a good does of vitamin sea!☀️🏝🌈 #poolfloat #Ryantube #floatingtube #beachitem',
 						title: 'Floating Mat Surfing Tube-Ryan',
 						price: '27.02',
 						added: '2016',
-						comments: '5'
+						comments: '5',
+						myList: false
 					},
 					{
+						id: 4,
 						imgs: [
 							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00001.jpg?type=thumb&opt=R340x340.q100',
-							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00002.jpg?type=thumb&opt=R340x340.q100'
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00005.jpg?type=thumb&opt=R340x340.q100',
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00002.jpg?type=thumb&opt=R340x340.q100',
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00005.jpg?type=thumb&opt=R340x340.q100'
 						],
 						desc: 'Glide across the water on this pool float in Ryan print we love💜 In these lazy hazy crazy days of summer, all you need is a good does of vitamin sea!☀️🏝🌈 #poolfloat #Ryantube #floatingtube #beachitem',
 						title: 'Floating Mat Surfing Tube-Ryan',
 						price: '27.02',
 						added: '2016',
-						comments: '5'
+						comments: '5',
+						myList: false
 					},
 					{
+						id: 5,
 						imgs: [
 							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00001.jpg?type=thumb&opt=R340x340.q100',
-							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00002.jpg?type=thumb&opt=R340x340.q100'
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00005.jpg?type=thumb&opt=R340x340.q100',
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00002.jpg?type=thumb&opt=R340x340.q100',
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00005.jpg?type=thumb&opt=R340x340.q100'
 						],
 						desc: 'Glide across the water on this pool float in Ryan print we love💜 In these lazy hazy crazy days of summer, all you need is a good does of vitamin sea!☀️🏝🌈 #poolfloat #Ryantube #floatingtube #beachitem',
 						title: 'Floating Mat Surfing Tube-Ryan',
 						price: '27.02',
 						added: '2016',
-						comments: '5'
+						comments: '5',
+						myList: false
 					},
 					{
+						id: 6,
 						imgs: [
 							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00001.jpg?type=thumb&opt=R340x340.q100',
-							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00002.jpg?type=thumb&opt=R340x340.q100'
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00005.jpg?type=thumb&opt=R340x340.q100',
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00002.jpg?type=thumb&opt=R340x340.q100',
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00005.jpg?type=thumb&opt=R340x340.q100'
 						],
 						desc: 'Glide across the water on this pool float in Ryan print we love💜 In these lazy hazy crazy days of summer, all you need is a good does of vitamin sea!☀️🏝🌈 #poolfloat #Ryantube #floatingtube #beachitem',
 						title: 'Floating Mat Surfing Tube-Ryan',
 						price: '27.02',
 						added: '2016',
-						comments: '5'
+						comments: '5',
+						myList: false
 					},
 					{
+						id: 7,
 						imgs: [
 							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00001.jpg?type=thumb&opt=R340x340.q100',
-							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00002.jpg?type=thumb&opt=R340x340.q100'
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00005.jpg?type=thumb&opt=R340x340.q100',
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00002.jpg?type=thumb&opt=R340x340.q100',
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00005.jpg?type=thumb&opt=R340x340.q100'
 						],
 						desc: 'Glide across the water on this pool float in Ryan print we love💜 In these lazy hazy crazy days of summer, all you need is a good does of vitamin sea!☀️🏝🌈 #poolfloat #Ryantube #floatingtube #beachitem',
 						title: 'Floating Mat Surfing Tube-Ryan',
 						price: '27.02',
 						added: '2016',
-						comments: '5'
+						comments: '5',
+						myList: false
 					},
 					{
+						id: 8,
 						imgs: [
 							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00001.jpg?type=thumb&opt=R340x340.q100',
-							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00002.jpg?type=thumb&opt=R340x340.q100'
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00005.jpg?type=thumb&opt=R340x340.q100',
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00002.jpg?type=thumb&opt=R340x340.q100',
+							'http://t1.kakaocdn.net/kakaofriends_global/product_0804/FRPBRYMAT0001_MODEL_C_00005.jpg?type=thumb&opt=R340x340.q100'
 						],
 						desc: 'Glide across the water on this pool float in Ryan print we love💜 In these lazy hazy crazy days of summer, all you need is a good does of vitamin sea!☀️🏝🌈 #poolfloat #Ryantube #floatingtube #beachitem',
 						title: 'Floating Mat Surfing Tube-Ryan',
 						price: '27.02',
 						added: '2016',
-						comments: '5'
+						comments: '5',
+						myList: false
 					}
-				]
+				],
+				visibleDetail: false
+			}
+		},
+		methods: {
+			addMyList: function(index, id) { //myList버튼 클릭 시 버튼 토글
+				//tobe: 상품이 장바구니에 들어가도록 api 연결
+				var vm = this;
+
+				vm.results[index].myList = !vm.results[index].myList
+			},
+
+			addActive: function(val) { //active class를 add하기 위함
+				if(val) return 'active'
+			},
+
+			showDetail: function() {
+				this.visibleDetail = true
+				document.body.className = 'scrollOff';
 			}
 		}
 	}
@@ -139,12 +193,6 @@
 		height: 540px;
 		padding: 0 20px;
 		text-align: left;
-	}
-	.imgSlide {
-		overflow: hidden;
-		width: 340px;
-		height: 340px;
-		border-radius: 5px;
 	}
 	.desc {
 		display: block;
@@ -184,6 +232,14 @@
 		margin: 8px 4px 0 0;
    		vertical-align: top;
 		background-position: -110px -100px;
+	}
+	button.addMyList.active {
+		background: #fd6b94;
+		border-color: #fd6b94;
+		color: #fff;
+	}
+	button.addMyList.active i {
+		background-position: -130px -100px;
 	}
 	button.addMyList {
 		width: 75px;
