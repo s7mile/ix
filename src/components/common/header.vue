@@ -9,17 +9,39 @@
 				<li class="myList">
 					<a href="/collection" class="icoApeach" title="my list">My List</a>
 				</li>
-				<li><a href="/" title="Sign in to your account">ACCOUNT</a></li>
+				<li><a href="javascript:;" @click="showSignIn" title="Sign in to your account">ACCOUNT</a></li>
 			</ul>
 		</nav>
+
+		<signin v-if="visibleDetail"></signin>
 	</header>
 	<!-- [E]header -->
 </template>
 
 <script>
-export default {
-	name: 'app-header',
-}
+	import signin from '../views/signin.vue'
+	export default {
+		name: 'app-header',
+		components: {signin},
+		data() {
+			return {
+				visibleDetail: false
+			}
+		},
+		created() {
+			var vm = this
+			vm.$EventBus.$on('visibleDetail', function(val) {
+				//visibleDetail 이벤트버스가 오면(닫기 버튼 눌렀을 경우) signin컴포넌트 숨겨주기
+			    vm.visibleDetail = false
+			});
+		},
+		methods: {
+			showSignIn: function() { //signin 컴포넌트 보여주기
+				this.visibleDetail = true
+				document.body.className = 'scrollOff'
+			}
+		}
+	}
 </script>
 
 <style scoped>
